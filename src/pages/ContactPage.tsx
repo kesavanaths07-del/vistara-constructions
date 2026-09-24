@@ -65,6 +65,7 @@ export const ContactPage: React.FC = () => {
 
         {/* 2-Column Layout */}
         <div
+          className="contact-layout-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(12, 1fr)',
@@ -81,7 +82,7 @@ export const ContactPage: React.FC = () => {
                   border: '1px solid #B08A52',
                   borderRadius: '2px',
                   boxShadow: '0 20px 60px rgba(45, 35, 25, 0.08)',
-                  padding: 'clamp(40px, 6vw, 64px)',
+                  padding: 'clamp(32px, 6vw, 64px)',
                   textAlign: 'center'
                 }}
               >
@@ -102,18 +103,21 @@ export const ContactPage: React.FC = () => {
             ) : (
               <form
                 onSubmit={handleSubmit}
+                className="contact-form-wrapper"
                 style={{
                   backgroundColor: '#FAF8F3',
                   border: '1px solid rgba(50, 42, 32, 0.12)',
                   borderRadius: '2px',
                   boxShadow: '0 20px 60px rgba(45, 35, 25, 0.06)',
-                  padding: 'clamp(32px, 5vw, 56px)',
+                  padding: 'clamp(24px, 5vw, 56px)',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '24px'
+                  gap: '24px',
+                  width: '100%',
+                  boxSizing: 'border-box'
                 }}
               >
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
+                <div className="contact-inputs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '24px' }}>
                   {/* Name */}
                   <div>
                     <label
@@ -187,7 +191,7 @@ export const ContactPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
+                <div className="contact-inputs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '24px' }}>
                   {/* Phone */}
                   <div>
                     <label
@@ -265,7 +269,7 @@ export const ContactPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
+                <div className="contact-inputs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '24px' }}>
                   {/* Project Type */}
                   <div>
                     <label
@@ -382,12 +386,14 @@ export const ContactPage: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="btn-primary"
+                  className="btn-primary contact-submit-btn"
                   style={{
                     alignSelf: 'flex-start',
                     minHeight: '48px',
                     padding: '16px 36px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    maxWidth: '100%',
+                    boxSizing: 'border-box'
                   }}
                 >
                   <span>SEND INQUIRY</span>
@@ -416,20 +422,36 @@ export const ContactPage: React.FC = () => {
                   DIRECT CHANNELS
                 </span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <Mail size={16} color="#B08A52" />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
+                    <Mail size={16} color="#B08A52" style={{ flexShrink: 0 }} />
                     <a
                       href="mailto:hello@vistaraconstructions.com"
-                      style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#26221D', textDecoration: 'none' }}
+                      className="break-all-safe"
+                      style={{
+                        fontFamily: 'var(--font-serif)',
+                        fontSize: 'clamp(0.9375rem, 3.8vw, 1.25rem)',
+                        color: '#26221D',
+                        textDecoration: 'none',
+                        overflowWrap: 'break-word',
+                        wordBreak: 'break-all'
+                      }}
                     >
                       hello@vistaraconstructions.com
                     </a>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <Phone size={16} color="#B08A52" />
-                    <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#26221D' }}>
+                    <Phone size={16} color="#B08A52" style={{ flexShrink: 0 }} />
+                    <a
+                      href="tel:+914424998200"
+                      style={{
+                        fontFamily: 'var(--font-serif)',
+                        fontSize: 'clamp(1rem, 3.8vw, 1.25rem)',
+                        color: '#26221D',
+                        textDecoration: 'none'
+                      }}
+                    >
                       +91 44 2499 8200
-                    </span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -458,31 +480,31 @@ export const ContactPage: React.FC = () => {
                         Chennai Studio
                       </h3>
                     </div>
-                    <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: '#686158', paddingLeft: '22px' }}>
+                    <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: '#686158', paddingLeft: '22px', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
                       Vistara Tower, Boat Club Road, R.A. Puram, Chennai — 600028
                     </p>
                   </div>
 
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                      <MapPin size={14} color="#B08A52" />
+                      <MapPin size={14} color="#B08A52" style={{ flexShrink: 0 }} />
                       <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', color: '#26221D' }}>
                         Bengaluru Studio
                       </h3>
                     </div>
-                    <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: '#686158', paddingLeft: '22px' }}>
+                    <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: '#686158', paddingLeft: '22px', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
                       The Pavilions, 48 Lavelle Road, Shanthala Nagar, Bengaluru — 560001
                     </p>
                   </div>
 
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                      <MapPin size={14} color="#B08A52" />
+                      <MapPin size={14} color="#B08A52" style={{ flexShrink: 0 }} />
                       <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.125rem', color: '#26221D' }}>
                         Hyderabad Studio
                       </h3>
                     </div>
-                    <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: '#686158', paddingLeft: '22px' }}>
+                    <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.8125rem', color: '#686158', paddingLeft: '22px', overflowWrap: 'break-word', wordBreak: 'break-word' }}>
                       Road No. 36, Jubilee Hills, Hyderabad — 500033
                     </p>
                   </div>
@@ -495,8 +517,27 @@ export const ContactPage: React.FC = () => {
 
       <style>{`
         @media (max-width: 960px) {
+          .contact-layout-grid {
+            grid-template-columns: 1fr !important;
+            gap: 48px !important;
+          }
           .contact-form-col, .contact-coords-col {
-            grid-column: span 12 !important;
+            grid-column: span 1 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .contact-form-wrapper {
+            padding: 24px 18px !important;
+          }
+          .contact-inputs-grid {
+            grid-template-columns: 1fr !important;
+            gap: 18px !important;
+          }
+          .contact-submit-btn {
+            width: 100% !important;
+            justify-content: center !important;
           }
         }
       `}</style>

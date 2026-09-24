@@ -21,6 +21,7 @@ export const Footer: React.FC = () => {
       <div className="container-custom">
         {/* Main Minimal Editorial Footer Grid */}
         <div
+          className="footer-main-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(12, 1fr)',
@@ -237,13 +238,23 @@ export const Footer: React.FC = () => {
 
       <style>{`
         @media (max-width: 900px) {
+          .footer-main-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 40px !important;
+          }
           .footer-brand-col, .footer-nav-col, .footer-studios-col, .footer-social-col {
-            grid-column: span 6 !important;
+            grid-column: span 1 !important;
+            width: 100% !important;
           }
         }
         @media (max-width: 600px) {
+          .footer-main-grid {
+            grid-template-columns: 1fr !important;
+            gap: 36px !important;
+          }
           .footer-brand-col, .footer-nav-col, .footer-studios-col, .footer-social-col {
-            grid-column: span 12 !important;
+            grid-column: span 1 !important;
+            width: 100% !important;
           }
         }
       `}</style>

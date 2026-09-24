@@ -27,11 +27,12 @@ export const JournalPage: React.FC = () => {
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.75rem, 5.5vw, 4.75rem)',
+              fontSize: 'clamp(2rem, 5.5vw, 4.75rem)',
               lineHeight: 1.08,
               color: '#26221D',
               letterSpacing: '0.02em',
-              marginBottom: '24px'
+              marginBottom: '24px',
+              overflowWrap: 'break-word'
             }}
           >
             THE VISTARA JOURNAL
@@ -145,7 +146,7 @@ export const JournalPage: React.FC = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            padding: '24px'
+            padding: 'clamp(12px, 3vw, 24px)'
           }}
           onClick={() => setSelectedArticle(null)}
         >
@@ -159,7 +160,8 @@ export const JournalPage: React.FC = () => {
               width: '100%',
               maxHeight: '90vh',
               overflowY: 'auto',
-              padding: 'clamp(32px, 5vw, 64px)',
+              padding: 'clamp(28px, 5vw, 64px) clamp(18px, 4vw, 48px)',
+              boxSizing: 'border-box',
               position: 'relative'
             }}
             onClick={(e) => e.stopPropagation()}
@@ -168,8 +170,8 @@ export const JournalPage: React.FC = () => {
               onClick={() => setSelectedArticle(null)}
               style={{
                 position: 'absolute',
-                top: '24px',
-                right: '24px',
+                top: '20px',
+                right: '20px',
                 background: 'transparent',
                 border: '1px solid rgba(50, 42, 32, 0.15)',
                 color: '#26221D',
@@ -195,10 +197,11 @@ export const JournalPage: React.FC = () => {
             <h2
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
+                fontSize: 'clamp(1.5rem, 3.5vw, 2.75rem)',
                 lineHeight: 1.2,
                 color: '#26221D',
-                marginBottom: '28px'
+                marginBottom: '28px',
+                overflowWrap: 'break-word'
               }}
             >
               {selectedArticle.title}

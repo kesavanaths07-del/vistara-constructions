@@ -81,12 +81,13 @@ export const ProjectDetail: React.FC = () => {
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.75rem, 5.5vw, 5rem)',
+              fontSize: 'clamp(2rem, 5.5vw, 5rem)',
               lineHeight: 1.08,
               color: '#26221D',
               letterSpacing: '0.02em',
               marginBottom: '24px',
-              textTransform: 'uppercase'
+              textTransform: 'uppercase',
+              overflowWrap: 'break-word'
             }}
           >
             {project.title}
@@ -95,10 +96,11 @@ export const ProjectDetail: React.FC = () => {
           <p
             style={{
               fontFamily: 'var(--font-editorial)',
-              fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
+              fontSize: 'clamp(1.125rem, 2vw, 1.75rem)',
               fontStyle: 'italic',
               lineHeight: 1.5,
-              color: '#B08A52'
+              color: '#B08A52',
+              overflowWrap: 'break-word'
             }}
           >
             {project.subtitle}
@@ -129,6 +131,7 @@ export const ProjectDetail: React.FC = () => {
       {/* Project Overview & Architectural Concept */}
       <div className="container-custom" style={{ marginBottom: '96px' }}>
         <div
+          className="project-overview-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(12, 1fr)',
@@ -155,10 +158,11 @@ export const ProjectDetail: React.FC = () => {
             <h2
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+                fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
                 color: '#26221D',
                 marginBottom: '28px',
-                lineHeight: 1.2
+                lineHeight: 1.2,
+                overflowWrap: 'break-word'
               }}
             >
               SPATIAL CHOREOGRAPHY &amp; CLIMATIC HARMONY
@@ -170,7 +174,8 @@ export const ProjectDetail: React.FC = () => {
                 fontSize: '1.0625rem',
                 lineHeight: 1.8,
                 color: '#24211D',
-                marginBottom: '24px'
+                marginBottom: '24px',
+                overflowWrap: 'break-word'
               }}
             >
               {project.overview}
@@ -181,7 +186,8 @@ export const ProjectDetail: React.FC = () => {
                 fontFamily: 'var(--font-sans)',
                 fontSize: '1rem',
                 lineHeight: 1.8,
-                color: '#686158'
+                color: '#686158',
+                overflowWrap: 'break-word'
               }}
             >
               {project.architecturalConcept}
@@ -194,7 +200,7 @@ export const ProjectDetail: React.FC = () => {
                   key={idx}
                   style={{
                     borderLeft: '2px solid #B08A52',
-                    paddingLeft: '24px'
+                    paddingLeft: 'clamp(16px, 3vw, 24px)'
                   }}
                 >
                   <h3
@@ -202,7 +208,8 @@ export const ProjectDetail: React.FC = () => {
                       fontFamily: 'var(--font-serif)',
                       fontSize: '1.125rem',
                       color: '#26221D',
-                      marginBottom: '8px'
+                      marginBottom: '8px',
+                      overflowWrap: 'break-word'
                     }}
                   >
                     {detail.title}
@@ -212,7 +219,8 @@ export const ProjectDetail: React.FC = () => {
                       fontFamily: 'var(--font-sans)',
                       fontSize: '0.875rem',
                       lineHeight: 1.7,
-                      color: '#686158'
+                      color: '#686158',
+                      overflowWrap: 'break-word'
                     }}
                   >
                     {detail.description}
@@ -225,12 +233,14 @@ export const ProjectDetail: React.FC = () => {
           {/* Right Column: Project Specifications Table (5 cols) */}
           <div style={{ gridColumn: 'span 5' }} className="project-detail-right">
             <div
+              className="project-specs-card"
               style={{
                 backgroundColor: '#FAF8F3',
                 border: '1px solid rgba(50, 42, 32, 0.12)',
                 borderRadius: '2px',
                 boxShadow: '0 10px 30px rgba(45, 35, 25, 0.05)',
-                padding: '36px 32px'
+                padding: 'clamp(24px, 4vw, 36px) clamp(18px, 3.5vw, 32px)',
+                boxSizing: 'border-box'
               }}
             >
               <span
@@ -271,7 +281,8 @@ export const ProjectDetail: React.FC = () => {
                       style={{
                         fontFamily: 'var(--font-serif)',
                         fontSize: '1.0625rem',
-                        color: '#26221D'
+                        color: '#26221D',
+                        overflowWrap: 'break-word'
                       }}
                     >
                       {spec.value}
@@ -296,7 +307,7 @@ export const ProjectDetail: React.FC = () => {
                 >
                   SPECIFIED MATERIALS
                 </span>
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {project.materialsUsed.map((m, idx) => (
                     <li
                       key={idx}
@@ -306,11 +317,11 @@ export const ProjectDetail: React.FC = () => {
                         color: '#686158',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '8px'
+                        gap: '10px'
                       }}
                     >
-                      <CheckCircle2 size={13} color="#B08A52" />
-                      {m}
+                      <CheckCircle2 size={14} color="#B08A52" style={{ flexShrink: 0 }} />
+                      <span style={{ overflowWrap: 'break-word' }}>{m}</span>
                     </li>
                   ))}
                 </ul>
@@ -318,7 +329,7 @@ export const ProjectDetail: React.FC = () => {
 
               {/* CTA */}
               <div style={{ marginTop: '36px' }}>
-                <Link to="/contact" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                <Link to="/contact" className="btn-primary" style={{ width: '100%', maxWidth: '100%', boxSizing: 'border-box', justifyContent: 'center' }}>
                   <span>COMMISSION SIMILAR</span>
                   <ArrowRight size={14} />
                 </Link>
@@ -440,8 +451,25 @@ export const ProjectDetail: React.FC = () => {
 
       <style>{`
         @media (max-width: 960px) {
+          .project-overview-grid {
+            grid-template-columns: 1fr !important;
+            gap: 48px !important;
+          }
           .project-detail-left, .project-detail-right {
-            grid-column: span 12 !important;
+            grid-column: span 1 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+          .project-specs-card {
+            padding: 28px 20px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .project-overview-grid {
+            gap: 36px !important;
+          }
+          .project-specs-card {
+            padding: 24px 16px !important;
           }
         }
       `}</style>

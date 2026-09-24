@@ -55,10 +55,10 @@ export const HeroScroll: React.FC = () => {
     } else if (frame < 44) {
       const p = (frame - 36) / 8;
       s1Opacity = 1 - p;
-      s1Y = -12 * p;
+      s1Y = -10 * p;
     } else {
       s1Opacity = 0;
-      s1Y = -12;
+      s1Y = -10;
     }
 
     // Stage 2: Structural Pillars
@@ -66,21 +66,21 @@ export const HeroScroll: React.FC = () => {
     let s2Y = 0;
     if (frame < 44) {
       s2Opacity = 0;
-      s2Y = 12;
+      s2Y = 10;
     } else if (frame < 52) {
       const p = (frame - 44) / 8;
       s2Opacity = p;
-      s2Y = 12 * (1 - p);
+      s2Y = 10 * (1 - p);
     } else if (frame <= 84) {
       s2Opacity = 1;
       s2Y = 0;
     } else if (frame < 92) {
       const p = (frame - 84) / 8;
       s2Opacity = 1 - p;
-      s2Y = -12 * p;
+      s2Y = -10 * p;
     } else {
       s2Opacity = 0;
-      s2Y = -12;
+      s2Y = -10;
     }
 
     // Stage 3: Walls + Roof / Selected Materials
@@ -88,21 +88,21 @@ export const HeroScroll: React.FC = () => {
     let s3Y = 0;
     if (frame < 92) {
       s3Opacity = 0;
-      s3Y = 12;
+      s3Y = 10;
     } else if (frame < 100) {
       const p = (frame - 92) / 8;
       s3Opacity = p;
-      s3Y = 12 * (1 - p);
+      s3Y = 10 * (1 - p);
     } else if (frame <= 160) {
       s3Opacity = 1;
       s3Y = 0;
     } else if (frame < 168) {
       const p = (frame - 160) / 8;
       s3Opacity = 1 - p;
-      s3Y = -12 * p;
+      s3Y = -10 * p;
     } else {
       s3Opacity = 0;
-      s3Y = -12;
+      s3Y = -10;
     }
 
     // Stage 4: Completed Residence / Ready For Life
@@ -110,11 +110,11 @@ export const HeroScroll: React.FC = () => {
     let s4Y = 0;
     if (frame < 168) {
       s4Opacity = 0;
-      s4Y = 12;
+      s4Y = 10;
     } else if (frame < 176) {
       const p = (frame - 168) / 8;
       s4Opacity = p;
-      s4Y = 12 * (1 - p);
+      s4Y = 10 * (1 - p);
     } else {
       s4Opacity = 1;
       s4Y = 0;
@@ -243,8 +243,8 @@ export const HeroScroll: React.FC = () => {
     if (canvas.width !== Math.floor(displayW * dpr) || canvas.height !== Math.floor(displayH * dpr)) {
       canvas.width = Math.floor(displayW * dpr);
       canvas.height = Math.floor(displayH * dpr);
-      canvas.style.width = `${displayW}px`;
-      canvas.style.height = `${displayH}px`;
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
       renderFrame(Math.round(currentFrameRef.current));
     }
   }, [renderFrame]);
@@ -439,7 +439,7 @@ export const HeroScroll: React.FC = () => {
           position: 'sticky',
           top: 0,
           left: 0,
-          width: '100vw',
+          width: '100%',
           height: '100vh',
           minHeight: '100svh',
           overflow: 'hidden',
@@ -756,8 +756,8 @@ export const HeroScroll: React.FC = () => {
                   textShadow: '0 4px 24px rgba(20, 15, 10, 0.65)'
                 }}
               >
-                READY FOR THE <br />
-                WAY YOU LIVE.
+                READY FOR THE WAY <br />
+                YOU LIVE.
               </h1>
 
               <p

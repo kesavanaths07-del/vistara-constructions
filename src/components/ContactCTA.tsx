@@ -104,7 +104,9 @@ export const ContactCTA: React.FC = () => {
               letterSpacing: '0.08em',
               color: 'var(--text-primary)',
               textDecoration: 'none',
-              transition: 'color 0.3s ease'
+              transition: 'color 0.3s ease',
+              overflowWrap: 'break-word',
+              wordBreak: 'break-word'
             }}
             onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-bronze)')}
             onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}

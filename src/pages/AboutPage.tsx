@@ -75,6 +75,7 @@ export const AboutPage: React.FC = () => {
       {/* Narrative & Philosophy Grid */}
       <div className="container-custom" style={{ marginBottom: '120px' }}>
         <div
+          className="about-narrative-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(12, 1fr)',
@@ -99,9 +100,11 @@ export const AboutPage: React.FC = () => {
             <h2
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(1.875rem, 3vw, 2.75rem)',
+                fontSize: 'clamp(1.5rem, 5vw, 2.75rem)',
                 lineHeight: 1.2,
-                color: '#26221D'
+                color: '#26221D',
+                overflowWrap: 'break-word',
+                wordBreak: 'break-word'
               }}
             >
               A RESIDENCE MUST OUTLIVE FLEETING TRENDS.
@@ -117,10 +120,10 @@ export const AboutPage: React.FC = () => {
             }}
             className="about-col"
           >
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1.0625rem', lineHeight: 1.8, color: '#24211D' }}>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1.0625rem', lineHeight: 1.8, color: '#24211D', overflowWrap: 'break-word' }}>
               In an era dominated by rapid, disposable construction, Vistara approaches the craft of building from a perspective of generational longevity. We do not build mere speculative square footage; we create private sanctuaries designed for decades of living.
             </p>
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', lineHeight: 1.8, color: '#686158' }}>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '1rem', lineHeight: 1.8, color: '#686158', overflowWrap: 'break-word' }}>
               Our work bridges high-performance structural engineering with ancient regional tectonics. We study the path of the sun across Chennai's coastline, the monsoon moisture of the Western Ghats, and the dry diurnal breezes of the Deccan Plateau. Every louver, courtyard opening, and stone block is oriented to harmonize with the climate.
             </p>
           </div>
@@ -278,8 +281,14 @@ export const AboutPage: React.FC = () => {
 
       <style>{`
         @media (max-width: 960px) {
+          .about-narrative-grid {
+            grid-template-columns: 1fr !important;
+            gap: 36px !important;
+          }
           .about-col {
-            grid-column: span 12 !important;
+            grid-column: span 1 !important;
+            width: 100% !important;
+            max-width: 100% !important;
           }
         }
       `}</style>
