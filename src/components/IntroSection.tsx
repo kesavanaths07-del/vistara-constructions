@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { MAIN_SECTIONS, formatSectionEyebrow } from '../data/sections';
 import { ArchitecturalImage } from './ArchitecturalImage';
 import { EditorialSection } from './EditorialSection';
 
@@ -34,7 +35,7 @@ export const IntroSection: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
               {/* Section Number & Eyebrow */}
               <div style={{ marginBottom: '8px' }}>
-                <span className="micro-label">01 — PHILOSOPHY</span>
+                <span className="micro-label">{formatSectionEyebrow(MAIN_SECTIONS.PHILOSOPHY)}</span>
               </div>
 
               <h2

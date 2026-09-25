@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { materials, Material } from '../data/materials';
+import { MAIN_SECTIONS, formatSectionEyebrow } from '../data/sections';
 import { EditorialSection } from './EditorialSection';
 
 export const MaterialsSection: React.FC = () => {
@@ -54,7 +55,7 @@ export const MaterialsSection: React.FC = () => {
         >
           <div>
             <span className="micro-label" style={{ marginBottom: '14px' }}>
-              04 — MATERIALITY
+              {formatSectionEyebrow(MAIN_SECTIONS.MATERIALITY)}
             </span>
             <h2
               className="heading-section"

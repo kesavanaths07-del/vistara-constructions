@@ -9,6 +9,9 @@ export interface EditorialSectionProps {
   imageWidthPercent?: number; // 54 - 60%
   className?: string;
   style?: React.CSSProperties;
+  layoutDirection?: 'image-left' | 'image-right';
+  textMaxWidth?: string | number;
+  alignItems?: React.CSSProperties['alignItems'];
 }
 
 export const EditorialSection: React.FC<EditorialSectionProps> = ({
@@ -19,9 +22,13 @@ export const EditorialSection: React.FC<EditorialSectionProps> = ({
   spacingBottom = 'clamp(120px, 12vw, 170px)',
   imageWidthPercent = 58,
   className = '',
-  style
+  style,
+  layoutDirection,
+  textMaxWidth,
+  alignItems = 'center'
 }) => {
-  const isReversed = index % 2 === 1;
+  const isImageRight = layoutDirection ? layoutDirection === 'image-right' : index % 2 === 1;
+  const isCustomLayout = layoutDirection !== undefined;
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -55,17 +62,42 @@ export const EditorialSection: React.FC<EditorialSectionProps> = ({
   }, []);
 
   // Compute directional animation classes
-  // Image Left (isReversed=false): Image from Left, Text from Right
-  // Image Right (isReversed=true): Image from Right, Text from Left
-  const imgAnimClass = isReversed
+  // Image Left (isImageRight=false): Image from Left, Text from Right
+  // Image Right (isImageRight=true): Image from Right, Text from Left
+  const imgAnimClass = isImageRight
     ? 'editorial-reveal-from-right'
     : 'editorial-reveal-from-left';
 
-  const textAnimClass = isReversed
+  const textAnimClass = isImageRight
     ? 'editorial-reveal-from-left'
     : 'editorial-reveal-from-right';
 
   const activeClass = isVisible ? 'editorial-reveal-active' : '';
+
+  const imageColumn = (
+    <div
+      key="editorial-img-col"
+      className={`editorial-img-col ${imgAnimClass} ${activeClass}`}
+      style={{
+        flex: `0 0 ${imageWidthPercent}%`
+      }}
+    >
+      {imageSlot}
+    </div>
+  );
+
+  const textColumn = (
+    <div
+      key="editorial-text-col"
+      className={`editorial-text-col ${textAnimClass} editorial-stagger ${activeClass}`}
+      style={{
+        flex: `0 0 ${100 - imageWidthPercent - 5}%`,
+        maxWidth: textMaxWidth !== undefined ? textMaxWidth : undefined
+      }}
+    >
+      {textSlot}
+    </div>
+  );
 
   return (
     <div
@@ -77,31 +109,24 @@ export const EditorialSection: React.FC<EditorialSectionProps> = ({
       }}
     >
       <div
-        className={`editorial-layout-row ${isReversed ? 'is-reversed' : ''}`}
+        className={`editorial-layout-row ${!isCustomLayout && isImageRight ? 'is-reversed' : ''}`}
         style={{
+          alignItems: alignItems,
           transform: offsetY !== 0 ? `translateY(var(--editorial-offset, ${offsetY}px))` : undefined,
           ['--editorial-offset' as any]: `${offsetY}px`
         }}
       >
-        {/* Substantial Architectural Image Column (55-60%) */}
-        <div
-          className={`editorial-img-col ${imgAnimClass} ${activeClass}`}
-          style={{
-            flex: `0 0 ${imageWidthPercent}%`
-          }}
-        >
-          {imageSlot}
-        </div>
-
-        {/* Editorial Text Column (40-45%) */}
-        <div
-          className={`editorial-text-col ${textAnimClass} editorial-stagger ${activeClass}`}
-          style={{
-            flex: `0 0 ${100 - imageWidthPercent - 5}%`
-          }}
-        >
-          {textSlot}
-        </div>
+        {isCustomLayout && isImageRight ? (
+          <>
+            {textColumn}
+            {imageColumn}
+          </>
+        ) : (
+          <>
+            {imageColumn}
+            {textColumn}
+          </>
+        )}
       </div>
     </div>
   );

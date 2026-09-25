@@ -1,104 +1,75 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
-import { ArchitecturalImage } from './ArchitecturalImage';
-import { EditorialSection } from './EditorialSection';
+import { MAIN_SECTIONS } from '../data/sections';
+import {
+  InteractiveArchitectureSection,
+  InteractiveSectionItem
+} from './InteractiveArchitectureSection';
+
+const craftPrinciples: InteractiveSectionItem[] = [
+  {
+    id: 'craft-permanence',
+    number: '01',
+    category: 'PERMANENCE OVER TRENDS',
+    title: 'Generational Longevity',
+    description:
+      'In an era dominated by rapid, disposable construction, Vistara approaches the craft of building from a perspective of generational longevity. We do not build mere speculative square footage; we create private sanctuaries designed for decades of living.',
+    detailTag: 'Sanctuary Architecture & Permanent Value',
+    image: '/images/craft/01-permanence.jpg',
+    imageAlt:
+      'Vistara Built on Craft — Timeless South Indian residence with aged natural stone, weathered timber colonnade, and mature courtyard greenery'
+  },
+  {
+    id: 'craft-discipline',
+    number: '02',
+    category: 'ARCHITECTURAL DISCIPLINE',
+    title: 'Architectural Coordination',
+    description:
+      'Collaborating seamlessly with leading architectural studios, translating complex structural cantilevers and parametric details into flawless reality.',
+    detailTag: 'Parametric Engineering & Structural Precision',
+    image: '/images/craft/02-discipline.jpg',
+    imageAlt:
+      'Vistara Built on Craft — Precise contemporary South Indian architecture, crisp geometry, clean structural lines, and refined travertine walls'
+  },
+  {
+    id: 'craft-craftsmanship',
+    number: '03',
+    category: 'GENERATIONAL CRAFTSMANSHIP',
+    title: 'Master Artisan Guilds',
+    description:
+      'Employing third-generation stone carvers, master teak woodworkers, and brass inlay craftsmen whose touch elevates raw minerals into poetry.',
+    detailTag: 'Generational Guilds & Hand-Carved Joinery',
+    image: '/images/craft/03-craftsmanship.jpg',
+    imageAlt:
+      'Vistara Built on Craft — Master artisan hand-finished timber joinery, solid teak fluting, brass inlay, and natural stone detailing'
+  },
+  {
+    id: 'craft-engineering',
+    number: '04',
+    category: 'CLIMATE-RESPONSIVE ENGINEERING',
+    title: 'Precision Quality Protocols',
+    description:
+      'Multi-stage laser alignment, acoustic sealing tests, structural thermal scanning, and proprietary waterproofing developed for severe coastal monsoons.',
+    detailTag: 'Monsoon Waterproofing & Multi-Stage Laser QA',
+    image: '/images/craft/04-engineering.jpg',
+    imageAlt:
+      'Vistara Built on Craft — Tropical South Indian residence demonstrating passive cooling, deep overhangs, shaded verandahs, and cross-ventilation'
+  }
+];
 
 export const AboutSection: React.FC = () => {
   return (
-    <section
+    <InteractiveArchitectureSection
       id="about-section"
-      style={{
-        backgroundColor: '#EEE8DC',
-        paddingTop: 'clamp(130px, 13vw, 180px)',
-        paddingBottom: 'clamp(130px, 13vw, 180px)',
-        position: 'relative'
-      }}
-    >
-      <div className="container-custom">
-        <EditorialSection
-          index={0} // index 0 => IMAGE LEFT, TEXT RIGHT (Craftsmanship Section)
-          imageWidthPercent={58}
-          spacingBottom="0"
-          textSlot={
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '24px'
-              }}
-            >
-              <div>
-                <span className="micro-label" style={{ marginBottom: '14px' }}>
-                  03 — APPROACH
-                </span>
-                <h2
-                  className="heading-section"
-                  style={{
-                    color: 'var(--text-heading)',
-                    lineHeight: 1.1,
-                    textTransform: 'uppercase',
-                    fontSize: 'clamp(2rem, 3.5vw, 3.25rem)'
-                  }}
-                >
-                  BUILT ON CRAFT. <br />
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-editorial)',
-                      fontStyle: 'italic',
-                      color: 'var(--accent-bronze)',
-                      textTransform: 'none',
-                      display: 'block',
-                      marginTop: '6px'
-                    }}
-                  >
-                    Defined by detail.
-                  </span>
-                </h2>
-              </div>
-
-              <p
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: 'clamp(1rem, 1.2vw, 1.125rem)',
-                  lineHeight: 1.8,
-                  color: 'var(--text-primary)'
-                }}
-              >
-                Every line drawn and every stone set begins with an understanding of permanence. We reject the ephemeral in pursuit of architecture that gains depth with age.
-              </p>
-
-              <p
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.9375rem',
-                  lineHeight: 1.85,
-                  color: 'var(--text-secondary)'
-                }}
-              >
-                Rooted in Chennai and operating across South India’s cultural corridors, Vistara brings together architectural discipline, generational craftsmanship, and climate-responsive engineering to create spaces that endure.
-              </p>
-
-              <div style={{ paddingTop: '12px' }}>
-                <Link to="/about" className="link-editorial">
-                  <span>OUR PHILOSOPHY &amp; CRAFT</span>
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
-            </div>
-          }
-          imageSlot={
-            <div className="img-zoom-container" style={{ borderRadius: '1px' }}>
-              <ArchitecturalImage
-                src="/images/about/approach-craft.jpg"
-                fallbackSrc="/images/about/approach-craft.jpg"
-                alt="Architectural craftsmanship, precision teak joinery and natural stone detailing by Vistara Constructions"
-                aspectRatio="4 / 3"
-              />
-            </div>
-          }
-        />
-      </div>
-    </section>
+      sectionConfig={MAIN_SECTIONS.APPROACH}
+      heading="BUILT ON CRAFT."
+      subheadingItalic="Defined by detail."
+      introParagraphs={[
+        'Every line drawn and every stone set begins with an understanding of permanence. We reject the ephemeral in pursuit of architecture that gains depth with age.',
+        'Rooted in Chennai and operating across South India’s cultural corridors, Vistara brings together architectural discipline, generational craftsmanship, and climate-responsive engineering to create spaces that endure.'
+      ]}
+      items={craftPrinciples}
+      imagePosition="left"
+      backgroundColor="#EEE8DC"
+    />
   );
 };

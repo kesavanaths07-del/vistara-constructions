@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { projects, Project } from '../data/projects';
+import { MAIN_SECTIONS, formatSectionEyebrow } from '../data/sections';
 import { ArchitecturalImage } from './ArchitecturalImage';
 import { EditorialSection } from './EditorialSection';
 
@@ -54,7 +55,7 @@ export const ProjectsGrid: React.FC = () => {
         >
           <div>
             <span className="micro-label" style={{ marginBottom: '14px' }}>
-              02 — SELECTED WORK
+              {formatSectionEyebrow(MAIN_SECTIONS.SELECTED_WORK)}
             </span>
             <h2
               className="heading-section"

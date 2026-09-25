@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { articles } from '../data/journal';
+import { MAIN_SECTIONS, formatSectionEyebrow } from '../data/sections';
 import { EditorialSection } from './EditorialSection';
 
 export const JournalSection: React.FC = () => {
@@ -33,7 +34,7 @@ export const JournalSection: React.FC = () => {
         >
           <div>
             <span className="micro-label" style={{ marginBottom: '14px' }}>
-              ARCHITECTURAL DISCOURSE
+              {formatSectionEyebrow(MAIN_SECTIONS.ARCHITECTURAL_DISCOURSE)}
             </span>
             <h2
               className="heading-section"

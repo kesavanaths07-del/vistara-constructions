@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import { MAIN_SECTIONS, formatSectionEyebrow } from '../data/sections';
 
 export const ContactCTA: React.FC = () => {
   return (
@@ -17,7 +18,7 @@ export const ContactCTA: React.FC = () => {
       <div className="container-custom" style={{ maxWidth: '920px', textAlign: 'center' }}>
         {/* Eyebrow */}
         <div style={{ marginBottom: '28px', display: 'flex', justifyContent: 'center' }}>
-          <span className="micro-label">05 — INQUIRIES &amp; ENGAGEMENT</span>
+          <span className="micro-label">{formatSectionEyebrow(MAIN_SECTIONS.INQUIRIES)}</span>
         </div>
 
         {/* Centered Destination Headline (Requirement 24) */}
