@@ -14,6 +14,7 @@ export const StatsSection: React.FC = () => {
     >
       <div className="container-custom">
         <div
+          className="stats-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))',

@@ -175,10 +175,15 @@ export const Footer: React.FC = () => {
               CONNECT
             </span>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {['Instagram', 'LinkedIn'].map((platform) => (
-                <li key={platform}>
+              {[
+                { name: 'Instagram', url: 'https://instagram.com' },
+                { name: 'LinkedIn', url: 'https://linkedin.com' },
+                { name: 'Facebook', url: 'https://facebook.com' },
+                { name: 'YouTube', url: 'https://youtube.com' }
+              ].map((platform) => (
+                <li key={platform.name}>
                   <a
-                    href={`https://${platform.toLowerCase()}.com`}
+                    href={platform.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -191,7 +196,7 @@ export const Footer: React.FC = () => {
                     onMouseEnter={(e) => (e.currentTarget.style.color = '#C5A875')}
                     onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(250, 248, 243, 0.75)')}
                   >
-                    {platform}
+                    {platform.name}
                   </a>
                 </li>
               ))}
@@ -201,6 +206,7 @@ export const Footer: React.FC = () => {
 
         {/* Minimal Copyright Line */}
         <div
+          className="footer-bottom-bar"
           style={{
             borderTop: '1px solid rgba(250, 248, 243, 0.06)',
             paddingTop: '32px',

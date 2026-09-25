@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArchitecturalImage } from './ArchitecturalImage';
 
 interface ValueItem {
   number: string;
@@ -42,7 +43,7 @@ export const ValuesSection: React.FC = () => {
     >
       <div className="container-custom">
         {/* Section Header */}
-        <div style={{ marginBottom: '64px' }}>
+        <div style={{ marginBottom: 'clamp(36px, 4.5vw, 48px)' }}>
           <span className="micro-label" style={{ marginBottom: '14px' }}>
             CORE PRINCIPLES
           </span>
@@ -57,8 +58,34 @@ export const ValuesSection: React.FC = () => {
           </h2>
         </div>
 
+        {/* Core Principles Dedicated Title/Hero Image */}
+        <div
+          className="img-zoom-container core-principles-hero-wrapper"
+          style={{
+            marginBottom: 'clamp(48px, 6vw, 72px)',
+            borderRadius: '1px',
+            border: '1px solid var(--border-subtle)',
+            overflow: 'hidden'
+          }}
+        >
+          <ArchitecturalImage
+            src="/images/about/core-principles.webp"
+            fallbackSrc="/images/about/core-principles.jpg"
+            alt="Vistara Core Principles — South Indian architectural colonnade with solid teak pillars, natural stone paving, and inner tropical courtyard"
+            aspectRatio="16 / 9"
+            className="core-principles-img"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center'
+            }}
+          />
+        </div>
+
         {/* 4-Column Architectural Typography Grid (Strictly No Icons) */}
         <div
+          className="values-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
@@ -114,6 +141,23 @@ export const ValuesSection: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        .core-principles-hero-wrapper {
+          width: 100%;
+          max-width: 100%;
+        }
+        @media (max-width: 768px) {
+          .core-principles-hero-wrapper .arch-img-wrapper {
+            aspect-ratio: 16 / 10 !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .core-principles-hero-wrapper .arch-img-wrapper {
+            aspect-ratio: 4 / 3 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

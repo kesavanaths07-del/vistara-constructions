@@ -7,17 +7,6 @@ import { EditorialSection } from './EditorialSection';
 export const JournalSection: React.FC = () => {
   const article1 = articles[1] || articles[0]; // The Return of the Courtyard
   const article2 = articles[0]; // Designing for the South Indian Climate
-  const secondaryArticles = articles.filter(
-    (a) => a.id !== article1.id && a.id !== article2.id
-  );
-
-  // Magazine categories
-  const publicationCategories = [
-    { label: 'DESIGN', slug: 'design' },
-    { label: 'MATERIALS', slug: 'materials' },
-    { label: 'CLIMATE', slug: 'climate' },
-    { label: 'CRAFT', slug: 'craft' }
-  ];
 
   return (
     <section
@@ -32,6 +21,7 @@ export const JournalSection: React.FC = () => {
       <div className="container-custom">
         {/* Section Header */}
         <div
+          className="section-header-editorial"
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -135,7 +125,7 @@ export const JournalSection: React.FC = () => {
         <EditorialSection
           index={1} // index 1 => TEXT LEFT, IMAGE RIGHT
           imageWidthPercent={58}
-          spacingBottom="clamp(72px, 8vw, 110px)"
+          spacingBottom="0"
           textSlot={
             <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
               <div className="project-meta-line">
@@ -199,122 +189,6 @@ export const JournalSection: React.FC = () => {
             </Link>
           }
         />
-
-        {/* Editorial Topics Index */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '32px',
-            marginBottom: '40px',
-            flexWrap: 'wrap',
-            borderTop: '1px solid var(--border-subtle)',
-            paddingTop: '36px'
-          }}
-        >
-          <span
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '0.6875rem',
-              letterSpacing: '0.24em',
-              fontWeight: 600,
-              color: 'var(--accent-bronze)',
-              textTransform: 'uppercase'
-            }}
-          >
-            EDITORIAL TOPICS:
-          </span>
-          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-            {publicationCategories.map((cat) => (
-              <span
-                key={cat.slug}
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.6875rem',
-                  letterSpacing: '0.2em',
-                  fontWeight: 500,
-                  color: 'var(--text-secondary)',
-                  textTransform: 'uppercase'
-                }}
-              >
-                {cat.label}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Compact Grid for Remaining Secondary Articles (Requirement 21) */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
-            gap: 'clamp(24px, 3.5vw, 48px)'
-          }}
-        >
-          {secondaryArticles.map((article) => (
-            <Link
-              key={article.id}
-              to="/journal"
-              style={{
-                textDecoration: 'none',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px'
-              }}
-              className="journal-card"
-            >
-              <div
-                className="img-zoom-container"
-                style={{
-                  aspectRatio: '16 / 10',
-                  backgroundColor: '#EEE8DC',
-                  borderRadius: '1px'
-                }}
-              >
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  loading="lazy"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
-
-              <div className="project-meta-line" style={{ fontSize: '0.625rem' }}>
-                <span>{article.category}</span>
-                <span className="dot">·</span>
-                <span>{article.date}</span>
-              </div>
-
-              <h4
-                style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: '1.25rem',
-                  color: 'var(--text-heading)',
-                  letterSpacing: '0.02em',
-                  lineHeight: 1.25,
-                  fontWeight: 400
-                }}
-              >
-                {article.title}
-              </h4>
-
-              <p
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.875rem',
-                  lineHeight: 1.7,
-                  color: 'var(--text-secondary)',
-                  display: '-webkit-box',
-                  WebkitLineClamp: 3,
-                  WebkitBoxOrient: 'vertical',
-                  overflow: 'hidden'
-                }}
-              >
-                {article.excerpt}
-              </p>
-            </Link>
-          ))}
-        </div>
       </div>
     </section>
   );

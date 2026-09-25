@@ -42,6 +42,7 @@ export const ProjectsGrid: React.FC = () => {
       <div className="container-custom">
         {/* Section Header with Refined Right-Aligned Title Accent (Requirement 31) */}
         <div
+          className="section-header-editorial"
           style={{
             display: 'flex',
             justifyContent: 'space-between',

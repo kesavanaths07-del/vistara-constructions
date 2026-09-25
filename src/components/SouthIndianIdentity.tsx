@@ -102,6 +102,7 @@ export const SouthIndianIdentity: React.FC = () => {
 
         {/* 4-Column Architectural Breakdown (No icons, pure typography) */}
         <div
+          className="identity-breakdown-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
@@ -119,7 +120,7 @@ export const SouthIndianIdentity: React.FC = () => {
                 gap: '12px'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
                 <span
                   style={{
                     fontFamily: 'var(--font-sans)',

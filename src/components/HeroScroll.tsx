@@ -942,6 +942,7 @@ export const HeroScroll: React.FC = () => {
           }
           .hero-cta-btn {
             width: 100% !important;
+            min-width: 0 !important;
             justify-content: center !important;
           }
         }

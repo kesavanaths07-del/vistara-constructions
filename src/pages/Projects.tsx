@@ -123,6 +123,7 @@ export const Projects: React.FC = () => {
 
           {/* Search Input */}
           <div
+            className="projects-search-bar"
             style={{
               display: 'flex',
               alignItems: 'center',

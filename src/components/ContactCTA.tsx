@@ -62,7 +62,7 @@ export const ContactCTA: React.FC = () => {
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'clamp(40px, 6vw, 64px)' }}>
           <Link
             to="/contact"
-            className="btn-primary"
+            className="btn-primary contact-cta-btn"
             style={{
               padding: '16px 36px',
               minHeight: '48px',
@@ -78,6 +78,7 @@ export const ContactCTA: React.FC = () => {
 
         {/* Subtle Minimalist Studio Coordinates */}
         <div
+          className="contact-cta-coords"
           style={{
             borderTop: '1px solid var(--border-subtle)',
             paddingTop: '36px',

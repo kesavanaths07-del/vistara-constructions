@@ -42,6 +42,7 @@ export const MaterialsSection: React.FC = () => {
       <div className="container-custom">
         {/* Section Header */}
         <div
+          className="section-header-editorial"
           style={{
             display: 'flex',
             justifyContent: 'space-between',

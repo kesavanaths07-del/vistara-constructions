@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ArchitecturalImage } from './ArchitecturalImage';
 
 interface Step {
   number: string;
@@ -61,7 +62,7 @@ export const ProcessTimeline: React.FC = () => {
     >
       <div className="container-custom">
         {/* Header */}
-        <div style={{ maxWidth: '780px', marginBottom: '64px' }}>
+        <div style={{ maxWidth: '780px', marginBottom: 'clamp(36px, 4.5vw, 48px)' }}>
           <span className="micro-label" style={{ marginBottom: '14px' }}>
             METHODOLOGY
           </span>
@@ -85,6 +86,31 @@ export const ProcessTimeline: React.FC = () => {
           >
             Our disciplined five-phase process ensures architectural purity from initial sketch to generational handover.
           </p>
+        </div>
+
+        {/* Methodology Dedicated Title/Hero Image */}
+        <div
+          className="img-zoom-container methodology-hero-wrapper"
+          style={{
+            marginBottom: 'clamp(48px, 6vw, 72px)',
+            borderRadius: '1px',
+            border: '1px solid var(--border-subtle)',
+            overflow: 'hidden'
+          }}
+        >
+          <ArchitecturalImage
+            src="/images/about/methodology-process.webp"
+            fallbackSrc="/images/about/methodology-process.jpg"
+            alt="Vistara Architectural Methodology — Drafting table with villa blueprint, natural stone, solid teak, brass fittings, and measuring tools"
+            aspectRatio="16 / 9"
+            className="methodology-process-img"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center'
+            }}
+          />
         </div>
 
         {/* 5-Phase Horizontal Sequence */}
@@ -201,6 +227,20 @@ export const ProcessTimeline: React.FC = () => {
       </div>
 
       <style>{`
+        .methodology-hero-wrapper {
+          width: 100%;
+          max-width: 100%;
+        }
+        @media (max-width: 768px) {
+          .methodology-hero-wrapper .arch-img-wrapper {
+            aspect-ratio: 16 / 10 !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .methodology-hero-wrapper .arch-img-wrapper {
+            aspect-ratio: 4 / 3 !important;
+          }
+        }
         @media (max-width: 1100px) and (min-width: 680px) {
           .timeline-grid {
             grid-template-columns: repeat(2, 1fr) !important;

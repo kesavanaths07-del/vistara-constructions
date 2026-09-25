@@ -602,18 +602,32 @@ p, span, a, li, label, div {
   .editorial-layout-row,
   .editorial-layout-row.is-reversed {
     flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
     gap: 32px !important;
     transform: none !important;
+    width: 100% !important;
   }
   .editorial-img-col {
     width: 100% !important;
     flex: none !important;
     max-width: 100% !important;
+    margin: 0 !important;
   }
   .editorial-text-col {
     width: 100% !important;
     flex: none !important;
     max-width: 100% !important;
+    align-self: stretch !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+  .editorial-text-col > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    align-items: flex-start !important;
+    text-align: left !important;
   }
   /* On mobile and narrow tablets, switch reveal animations to vertical-only to prevent any horizontal overflow */
   .editorial-reveal-from-left,
@@ -622,32 +636,360 @@ p, span, a, li, label, div {
   }
 }
 
-/* Fluid Container Padding across Breakpoints */
+/* =======================================================
+   DEDICATED LUXURY EDITORIAL MOBILE SYSTEM (< 768px)
+   Strictly mobile-only. Desktop & laptop remains 100% untouched.
+   ======================================================= */
 @media (max-width: 767px) {
   :root {
     --container-padding: 20px;
+    --section-py: clamp(56px, 9vw, 84px);
+    --section-py-large: clamp(64px, 10vw, 96px);
   }
+
+  /* 1. Mobile Container & Viewport Geometry - Zero Horizontal Overflow */
+  html, body {
+    overflow-x: clip !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+
+  .container-custom {
+    padding-left: var(--container-padding) !important;
+    padding-right: var(--container-padding) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* 2. Editorial Row and Text Column Discipline:
+     Strict Left Edge Alignment, No Centering Drift, Full Available Width */
+  .editorial-section {
+    margin-bottom: clamp(64px, 10vw, 96px) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .editorial-layout-row,
+  .editorial-layout-row.is-reversed {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 24px !important;
+    width: 100% !important;
+    transform: none !important;
+  }
+
+  .editorial-img-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    margin: 0 !important;
+  }
+
+  .editorial-img-col .img-zoom-container,
+  .editorial-img-col .arch-img-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .editorial-text-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    align-self: stretch !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .editorial-text-col > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .editorial-text-col h2,
+  .editorial-text-col h3,
+  .editorial-text-col p,
+  .editorial-text-col .micro-label,
+  .editorial-text-col .editorial-project-number,
+  .editorial-text-col .project-meta-line,
+  .editorial-text-col .link-editorial {
+    text-align: left !important;
+    margin-left: 0 !important;
+  }
+
+  .editorial-project-number {
+    align-self: flex-start !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Neutralize reveal translation offsets on mobile so elements never shift outside the screen */
+  .editorial-reveal-from-left,
+  .editorial-reveal-from-right,
+  .editorial-reveal-from-up {
+    transform: translate3d(0, 16px, 0) !important;
+  }
+
+  /* 3. Editorial Two-Column Section Headers on Mobile:
+     Stack with Left-Alignment instead of squishing paragraph to the right */
+  .section-header-editorial {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    margin-bottom: 32px !important;
+  }
+
+  .section-header-editorial p {
+    max-width: 100% !important;
+    width: 100% !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+  }
+
+  /* 4. Luxury Typography Scaling & Natural Word Wrapping */
+  .heading-hero {
+    font-size: clamp(26px, 7vw, 42px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.01em !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+
+  .heading-section {
+    font-size: clamp(1.75rem, 6.2vw, 2.5rem) !important;
+    line-height: 1.14 !important;
+    letter-spacing: 0.01em !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    text-align: left !important;
+  }
+
+  .heading-editorial-statement {
+    font-size: clamp(1.625rem, 5.8vw, 2.35rem) !important;
+    line-height: 1.18 !important;
+    letter-spacing: 0.01em !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    text-align: left !important;
+  }
+
+  /* Page main h1 headers on mobile */
+  main h1 {
+    font-size: clamp(1.85rem, 7.5vw, 2.85rem) !important;
+    line-height: 1.1 !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+
+  /* Paragraphs use full available container width with natural line wrapping */
+  .container-custom p,
+  .editorial-text-col p {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 5. Metadata Lines: Wrap naturally without clipping or pushing horizontal bounds */
+  .project-meta-line {
+    flex-wrap: wrap !important;
+    row-gap: 4px !important;
+    column-gap: 8px !important;
+    font-size: 0.6875rem !important;
+    letter-spacing: 0.16em !important;
+    line-height: 1.5 !important;
+    align-self: flex-start !important;
+  }
+
+  .micro-label, .micro-label-light {
+    letter-spacing: 0.2em !important;
+    font-size: 0.625rem !important;
+  }
+
+  /* 6. Section Vertical Breathing Room on Mobile */
+  #intro-section,
+  #projects-section,
+  #about-section,
+  #values-section,
+  #south-indian-identity,
+  #process-section,
+  #materials-section,
+  #testimonials-section,
+  #stats-section,
+  #journal-section,
+  #contact-cta-section {
+    padding-top: clamp(64px, 10vw, 96px) !important;
+    padding-bottom: clamp(64px, 10vw, 96px) !important;
+  }
+
+  /* 7. Interactive Buttons & Form Elements */
   .btn-primary, .btn-secondary {
-    min-height: 44px;
-    padding: 12px 24px;
-    max-width: 100%;
-    box-sizing: border-box;
+    min-height: 46px !important;
+    padding: 12px 24px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    letter-spacing: 0.16em !important;
   }
-  /* Prevent iOS Safari zoom on input focus */
+
+  .link-editorial {
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+  }
+
   input, select, textarea {
-    font-size: 16px !important;
-    max-width: 100%;
-    box-sizing: border-box;
+    font-size: 16px !important; /* Prevents iOS Safari auto-zoom */
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 8. Minimalist Statistics: Balanced 2-Column Mobile Grid */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 28px 20px !important;
+  }
+
+  /* 9. Contact CTA Studio Coordinates Bar */
+  .contact-cta-coords {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+  }
+
+  .contact-cta-coords .project-meta-line {
+    justify-content: flex-start !important;
+  }
+
+  /* 10. Architectural Footer: Balanced 2-Column Subgrid */
+  .footer-main-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 36px 20px !important;
+  }
+
+  .footer-brand-col {
+    grid-column: span 2 !important;
+    width: 100% !important;
+  }
+
+  .footer-nav-col {
+    grid-column: span 1 !important;
+    width: 100% !important;
+  }
+
+  .footer-studios-col {
+    grid-column: span 1 !important;
+    width: 100% !important;
+  }
+
+  .footer-social-col {
+    grid-column: span 2 !important;
+    width: 100% !important;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  /* 11. Section Specific Mobile Optimizations */
+  .projects-search-bar {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .contact-cta-btn {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .identity-breakdown-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .project-overview-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  .project-specs-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 24px 18px !important;
+  }
+
+  .about-narrative-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .about-col {
+    grid-column: span 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .journal-grid-three,
+  .journal-grid-two {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
   }
 }
 
+/* =======================================================
+   EXTRA-NARROW MOBILE BREAKPOINT (<= 360px)
+   Ensuring full integrity on 320px–360px devices (iPhone SE, etc.)
+   ======================================================= */
 @media (max-width: 360px) {
   :root {
-    --container-padding: 16px;
+    --container-padding: 16px !important;
   }
+
   .btn-primary, .btn-secondary {
-    padding: 12px 18px;
-    font-size: 0.6875rem;
+    padding: 12px 18px !important;
+    font-size: 0.6875rem !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  .heading-section {
+    font-size: 1.5rem !important;
+  }
+
+  .heading-editorial-statement {
+    font-size: 1.45rem !important;
+  }
+
+  main h1 {
+    font-size: 1.75rem !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .footer-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .footer-brand-col,
+  .footer-nav-col,
+  .footer-studios-col,
+  .footer-social-col {
+    grid-column: span 1 !important;
   }
 }
 

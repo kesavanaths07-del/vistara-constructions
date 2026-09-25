@@ -51,7 +51,7 @@ export const ProjectDetail: React.FC = () => {
       {/* Project Title & Metadata Header */}
       <div className="container-custom" style={{ marginBottom: '48px' }}>
         <div style={{ maxWidth: '960px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', flexWrap: 'wrap', rowGap: '6px' }}>
             <span
               style={{
                 fontFamily: 'var(--font-sans)',
