@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { SectionConfig, formatSectionEyebrow } from '../data/sections';
+import { MobileSectionSlider, MobileSliderItem } from './MobileSectionSlider';
 
-export interface InteractiveSectionItem {
+export interface InteractiveSectionItem extends MobileSliderItem {
   id: string;
   number: string;
   category?: string;
   title: string;
+  overlayLabel?: string;
   description: string;
   deliverables?: string[];
   keyOutputLabel?: string;
   detailTag?: string;
+  origin?: string;
   image: string;
   imageAlt: string;
 }
@@ -49,12 +52,93 @@ export const InteractiveArchitectureSection: React.FC<InteractiveArchitectureSec
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   const displayEyebrow = sectionConfig ? formatSectionEyebrow(sectionConfig) : (eyebrow || '');
-
   const activeItem = items[activeIdx] || items[0];
   const isImageRight = imagePosition === 'right';
 
-  // Dynamic Image Column
-  const imageColumn = (
+  // Shared Header Area (Eyebrow, Title, Subtitle, Intro copy)
+  const headerArea = (
+    <div style={{ marginBottom: 'clamp(24px, 3vw, 36px)' }}>
+      <div
+        style={{
+          marginBottom: '14px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}
+      >
+        <span className="micro-label">{displayEyebrow}</span>
+
+        {showEmblem && (
+          <div
+            style={{
+              width: '26px',
+              height: '26px',
+              borderRadius: '50%',
+              border: '1px solid rgba(176, 138, 82, 0.4)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              opacity: 0.8
+            }}
+            aria-hidden="true"
+          >
+            <span
+              style={{
+                width: '4px',
+                height: '4px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--accent-bronze)'
+              }}
+            />
+          </div>
+        )}
+      </div>
+
+      <h2
+        className="heading-section"
+        style={{
+          color: 'var(--text-heading)',
+          textTransform: 'uppercase',
+          fontSize: 'clamp(2rem, 3.2vw, 3.25rem)',
+          lineHeight: 1.15
+        }}
+      >
+        {heading}
+        {subheadingItalic && (
+          <span
+            style={{
+              fontFamily: 'var(--font-editorial)',
+              fontStyle: 'italic',
+              color: 'var(--accent-bronze)',
+              textTransform: 'none',
+              display: 'block',
+              marginTop: '6px'
+            }}
+          >
+            {subheadingItalic}
+          </span>
+        )}
+      </h2>
+
+      {introParagraphs.map((para, i) => (
+        <p
+          key={i}
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontSize: 'clamp(0.9375rem, 1.1vw, 1.0625rem)',
+            color: i === 0 ? 'var(--text-primary)' : 'var(--text-secondary)',
+            marginTop: i === 0 ? '16px' : '12px',
+            lineHeight: 1.75
+          }}
+        >
+          {para}
+        </p>
+      ))}
+    </div>
+  );
+
+  // Desktop Dynamic Image Column
+  const desktopImageColumn = (
     <div
       key="interactive-img-col"
       className="interactive-arch-image-col"
@@ -151,8 +235,8 @@ export const InteractiveArchitectureSection: React.FC<InteractiveArchitectureSec
     </div>
   );
 
-  // Content Column (Heading + Text + Selectable Points)
-  const contentColumn = (
+  // Desktop Content Column (Header Area + Vertical Selectable Points List)
+  const desktopContentColumn = (
     <div
       key="interactive-content-col"
       className="interactive-arch-content-col"
@@ -164,96 +248,18 @@ export const InteractiveArchitectureSection: React.FC<InteractiveArchitectureSec
         justifyContent: 'center'
       }}
     >
-      {/* Header Area */}
-      <div style={{ marginBottom: 'clamp(24px, 3vw, 36px)' }}>
-        <div
-          style={{
-            marginBottom: '14px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between'
-          }}
-        >
-          <span className="micro-label">{displayEyebrow}</span>
+      {headerArea}
 
-          {showEmblem && (
-            <div
-              style={{
-                width: '26px',
-                height: '26px',
-                borderRadius: '50%',
-                border: '1px solid rgba(176, 138, 82, 0.4)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                opacity: 0.8
-              }}
-              aria-hidden="true"
-            >
-              <span
-                style={{
-                  width: '4px',
-                  height: '4px',
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--accent-bronze)'
-                }}
-              />
-            </div>
-          )}
-        </div>
-
-        <h2
-          className="heading-section"
-          style={{
-            color: 'var(--text-heading)',
-            textTransform: 'uppercase',
-            fontSize: 'clamp(2rem, 3.2vw, 3.25rem)',
-            lineHeight: 1.15
-          }}
-        >
-          {heading}
-          {subheadingItalic && (
-            <span
-              style={{
-                fontFamily: 'var(--font-editorial)',
-                fontStyle: 'italic',
-                color: 'var(--accent-bronze)',
-                textTransform: 'none',
-                display: 'block',
-                marginTop: '6px'
-              }}
-            >
-              {subheadingItalic}
-            </span>
-          )}
-        </h2>
-
-        {introParagraphs.map((para, i) => (
-          <p
-            key={i}
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 'clamp(0.9375rem, 1.1vw, 1.0625rem)',
-              color: i === 0 ? 'var(--text-primary)' : 'var(--text-secondary)',
-              marginTop: i === 0 ? '16px' : '12px',
-              lineHeight: 1.75
-            }}
-          >
-            {para}
-          </p>
-        ))}
-      </div>
-
-      {/* Unified Vertical Selectors List */}
+      {/* Unified Vertical Selectors List (Desktop Only > 860px) */}
       <div
-        className="interactive-points-list"
+        className="interactive-points-list interactive-points-desktop"
+        role="tablist"
+        aria-label={displayEyebrow}
         style={{
           display: 'flex',
           flexDirection: 'column',
           width: '100%'
         }}
-        role="tablist"
-        aria-label={displayEyebrow}
       >
         {items.map((item, index) => {
           const isSelected = activeIdx === index;
@@ -467,8 +473,11 @@ export const InteractiveArchitectureSection: React.FC<InteractiveArchitectureSec
       }}
     >
       <div className="container-custom">
+        {/* DESKTOP VIEW (> 860px): Preserved side-by-side layout */}
         <div
-          className={`interactive-arch-row ${isImageRight ? 'is-image-right' : 'is-image-left'}`}
+          className={`interactive-arch-row interactive-desktop-layout ${
+            isImageRight ? 'is-image-right' : 'is-image-left'
+          }`}
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -479,15 +488,33 @@ export const InteractiveArchitectureSection: React.FC<InteractiveArchitectureSec
         >
           {isImageRight ? (
             <>
-              {contentColumn}
-              {imageColumn}
+              {desktopContentColumn}
+              {desktopImageColumn}
             </>
           ) : (
             <>
-              {imageColumn}
-              {contentColumn}
+              {desktopImageColumn}
+              {desktopContentColumn}
             </>
           )}
+        </div>
+
+        {/* MOBILE VIEW (<= 860px): Exact hierarchy requested:
+            1. Section number + label
+            2. Main title
+            3. Introductory copy
+            4. Large image slider with internal arrows & bottom overlay
+            5. Point details & indicators below
+        */}
+        <div className="interactive-mobile-layout">
+          {headerArea}
+          <MobileSectionSlider
+            items={items}
+            activeIndex={activeIdx}
+            onSelectIndex={setActiveIdx}
+            ariaLabel={displayEyebrow}
+            aspectRatio="4 / 3"
+          />
         </div>
       </div>
 
@@ -512,6 +539,16 @@ export const InteractiveArchitectureSection: React.FC<InteractiveArchitectureSec
           border-top-color: var(--accent-bronze) !important;
         }
 
+        .interactive-desktop-layout {
+          display: flex !important;
+          width: 100% !important;
+        }
+
+        .interactive-mobile-layout {
+          display: none !important;
+          width: 100% !important;
+        }
+
         @media (max-width: 1024px) {
           .interactive-arch-row {
             gap: clamp(24px, 3.5vw, 44px) !important;
@@ -519,30 +556,13 @@ export const InteractiveArchitectureSection: React.FC<InteractiveArchitectureSec
         }
 
         @media (max-width: 860px) {
-          .interactive-arch-row,
-          .interactive-arch-row.is-image-right,
-          .interactive-arch-row.is-image-left {
+          .interactive-desktop-layout {
+            display: none !important;
+          }
+          .interactive-mobile-layout {
+            display: flex !important;
             flex-direction: column !important;
-            align-items: flex-start !important;
-            justify-content: flex-start !important;
-            gap: 32px !important;
-          }
-          /* Mobile Order: Image first, then content */
-          .interactive-arch-image-col {
             width: 100% !important;
-            max-width: 100% !important;
-            flex: none !important;
-            order: 1 !important;
-          }
-          .interactive-arch-content-col {
-            width: 100% !important;
-            max-width: 100% !important;
-            flex: none !important;
-            order: 2 !important;
-          }
-          .interactive-point-detail-reveal p,
-          .interactive-point-detail-reveal div {
-            padding-left: 0 !important;
           }
         }
       `}</style>

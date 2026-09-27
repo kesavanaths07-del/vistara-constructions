@@ -11,6 +11,7 @@ const craftPrinciples: InteractiveSectionItem[] = [
     number: '01',
     category: 'PERMANENCE OVER TRENDS',
     title: 'Generational Longevity',
+    overlayLabel: '01 — PERMANENCE OVER TRENDS',
     description:
       'In an era dominated by rapid, disposable construction, Vistara approaches the craft of building from a perspective of generational longevity. We do not build mere speculative square footage; we create private sanctuaries designed for decades of living.',
     detailTag: 'Sanctuary Architecture & Permanent Value',
@@ -23,6 +24,7 @@ const craftPrinciples: InteractiveSectionItem[] = [
     number: '02',
     category: 'ARCHITECTURAL DISCIPLINE',
     title: 'Architectural Coordination',
+    overlayLabel: '02 — ARCHITECTURAL DISCIPLINE',
     description:
       'Collaborating seamlessly with leading architectural studios, translating complex structural cantilevers and parametric details into flawless reality.',
     detailTag: 'Parametric Engineering & Structural Precision',
@@ -35,6 +37,7 @@ const craftPrinciples: InteractiveSectionItem[] = [
     number: '03',
     category: 'GENERATIONAL CRAFTSMANSHIP',
     title: 'Master Artisan Guilds',
+    overlayLabel: '03 — GENERATIONAL CRAFTSMANSHIP',
     description:
       'Employing third-generation stone carvers, master teak woodworkers, and brass inlay craftsmen whose touch elevates raw minerals into poetry.',
     detailTag: 'Generational Guilds & Hand-Carved Joinery',
@@ -47,6 +50,7 @@ const craftPrinciples: InteractiveSectionItem[] = [
     number: '04',
     category: 'CLIMATE-RESPONSIVE ENGINEERING',
     title: 'Precision Quality Protocols',
+    overlayLabel: '04 — CLIMATE-RESPONSIVE ENGINEERING',
     description:
       'Multi-stage laser alignment, acoustic sealing tests, structural thermal scanning, and proprietary waterproofing developed for severe coastal monsoons.',
     detailTag: 'Monsoon Waterproofing & Multi-Stage Laser QA',

@@ -11,6 +11,7 @@ const tectonicPrinciples: InteractiveSectionItem[] = [
     number: '01',
     category: 'PASSIVE CROSS-VENTILATION',
     title: 'Monsoon-Responsive Flow',
+    overlayLabel: '01 — PASSIVE CROSS-VENTILATION',
     description:
       'Orientation tuned to regional monsoon winds, drawing air through shaded vegetation and courtyard conduits to naturally cool thermal mass.',
     detailTag: 'Diurnal Airflow Corridors & Microclimate Cooling',
@@ -23,6 +24,7 @@ const tectonicPrinciples: InteractiveSectionItem[] = [
     number: '02',
     category: 'SOLAR MODULATION',
     title: 'Deep Verandahs & Overhangs',
+    overlayLabel: '02 — SOLAR MODULATION',
     description:
       'Generous cantilevered timber eaves shield glass facades from harsh solar angles, eliminating thermal gain while extending outdoor living.',
     detailTag: 'Thermal Eaves & Geometric Sun Shading',
@@ -35,6 +37,7 @@ const tectonicPrinciples: InteractiveSectionItem[] = [
     number: '03',
     category: 'THOTTI MANE REIMAGINED',
     title: 'Courtyard Typology',
+    overlayLabel: '03 — THOTTI MANE REIMAGINED',
     description:
       'Central open-to-sky voids that induce natural stack chimney ventilation, framing tropical rain, morning light, and lush interior microclimates.',
     detailTag: 'Stack Ventilation & Living Impluvium',
@@ -47,6 +50,7 @@ const tectonicPrinciples: InteractiveSectionItem[] = [
     number: '04',
     category: 'INTEGRATED WATERBODIES',
     title: 'Living Rainwater Basins',
+    overlayLabel: '04 — INTEGRATED WATERBODIES',
     description:
       'Shallow black granite reflecting pools that lower surrounding ambient temperatures through evaporative microclimate cooling.',
     detailTag: 'Evaporative Cooling & Water Reflection',

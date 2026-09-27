@@ -11,6 +11,7 @@ const coreValues: InteractiveSectionItem[] = [
     number: '01',
     category: 'CLIMATE & CONTEXT',
     title: 'DESIGN',
+    overlayLabel: '01 — DESIGN',
     description:
       'Architecture that responds intimately to people, landscape and the South Indian tropical climate.',
     detailTag: 'Bioclimatic Orientation & Spatial Purity',
@@ -23,6 +24,7 @@ const coreValues: InteractiveSectionItem[] = [
     number: '02',
     category: 'MATERIAL PRECISION',
     title: 'CRAFT',
+    overlayLabel: '02 — CRAFT',
     description:
       'Material precision, uncompromising timber joinery, and generational stone craftsmanship.',
     detailTag: 'Handcrafted Timber Joinery & Natural Stone',
@@ -35,6 +37,7 @@ const coreValues: InteractiveSectionItem[] = [
     number: '03',
     category: 'ENGINEERING RIGOR',
     title: 'INTEGRITY',
+    overlayLabel: '03 — INTEGRITY',
     description:
       'Transparent material provenance, disciplined engineering rigor, and responsible execution.',
     detailTag: 'Honest Materials & Multi-Stage Laser QA',
@@ -47,6 +50,7 @@ const coreValues: InteractiveSectionItem[] = [
     number: '04',
     category: 'GENERATIONAL PATINA',
     title: 'LEGACY',
+    overlayLabel: '04 — LEGACY',
     description:
       'Residences conceived and built to gain patina, dignity and permanence across generations.',
     detailTag: 'Generational Patina & Permanent Value',
